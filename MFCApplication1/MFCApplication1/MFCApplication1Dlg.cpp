@@ -60,7 +60,8 @@ CMFCApplication1Dlg::CMFCApplication1Dlg(CWnd* pParent /*=nullptr*/)
 
 void CMFCApplication1Dlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange( pDX );
+	DDX_Control( pDX, IDC_TAB1, AAA );
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
@@ -70,6 +71,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_BN_CLICKED( IDC_BUTTON1, &CMFCApplication1Dlg::OnBnClickedButton1 )
 	ON_BN_CLICKED( IDC_BUTTON2, &CMFCApplication1Dlg::OnBnClickedButton2 )
 	ON_WM_SIZE()
+	ON_NOTIFY( TCN_SELCHANGE, IDC_TAB1, &CMFCApplication1Dlg::OnTcnSelchangeTab1 )
 END_MESSAGE_MAP()
 
 
@@ -173,6 +175,7 @@ void CMFCApplication1Dlg::OnBnClickedButton2()
 	// TODO: ここにコントロール通知ハンドラー コードを追加します。
 	CDataDialog dlg;
 
+
 	INT_PTR nRes = dlg.DoModal();
 	if( nRes == IDOK )
 	{	// "OK"(ダイアログ上のどこかをクリックした)時.
@@ -209,4 +212,11 @@ void CMFCApplication1Dlg::OnSize( UINT nType, int cx, int cy )
 			btnHeight
 		);
 	}
+}
+
+
+void CMFCApplication1Dlg::OnTcnSelchangeTab1( NMHDR* pNMHDR, LRESULT* pResult )
+{
+	// TODO: ここにコントロール通知ハンドラー コードを追加します。
+	*pResult = 0;
 }

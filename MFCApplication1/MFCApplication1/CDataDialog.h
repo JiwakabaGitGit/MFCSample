@@ -28,5 +28,13 @@ public:
     int GetHeight();
     virtual BOOL OnInitDialog();
     afx_msg void OnSize( UINT nType, int cx, int cy );
+
+private:
+    CBrush m_brEdit;
+    COLORREF	m_colEditText;
+    COLORREF	m_colStaticText;// スタティックテキストのテキスト色
+public:
+    afx_msg HBRUSH OnCtlColor( CDC* pDC, CWnd* pWnd, UINT nCtlColor );
+    virtual BOOL PreTranslateMessage( MSG* pMsg );
 };
 
